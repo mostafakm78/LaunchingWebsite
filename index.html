@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./fonts/font.css">
+    <link rel="stylesheet" href="./Style.css">
+    <title>coming soon Page</title>
+</head>
+<body>
+    <div class="container">
+        <h1>دی گیم</h1>
+        <div class="content">
+            <p>وبسایت در دست تعمیر می باشد</p>
+            <h2>سایت به زودی  <span>لانچ</span> میشود</h2>
+            <div class="launch-time">
+                <div>
+                    <p id="days">00</p>
+                    <span>روز</span>
+                </div>
+                <div>
+                    <p id="hours">00</p>
+                    <span>ساعت</span>
+                </div>
+                <div>
+                    <p id="minutes">00</p>
+                    <span>دقیقه</span>
+                </div>
+                <div>
+                    <p id="seconds">00</p>
+                    <span>ثانیه</span>
+                </div>
+            </div>
+            <button>اطلاعات بیشتر</button>
+        </div>
+        <img src="./rocket.png" class="rocket">
+    </div>
+    <script>
+
+        let CountdownTime = new Date("mar 19, 2025 00:00:00").getTime()
+        let X = setInterval(() => {
+            let Now = new Date().getTime()
+            let Distance = CountdownTime - Now
+
+            let Days = Math.floor(Distance / (1000 * 60 * 60 * 24))
+            let hours = Math.floor(Distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+            let minutes = Math.floor(Distance % (1000 * 60 * 60) / (1000 * 60))
+            let seconds = Math.floor(Distance % (1000 * 60) / 1000)
+
+            document.querySelector('#days').innerHTML = Days
+            document.querySelector('#hours').innerHTML = hours
+            document.querySelector('#minutes').innerHTML = minutes
+            document.querySelector('#seconds').innerHTML = seconds
+
+            if (Distance < 0)  {
+                clearInterval(X)
+                document.querySelector('#days').innerHTML = "00"
+                document.querySelector('#hours').innerHTML = "00"
+                document.querySelector('#minutes').innerHTML = "00"
+                document.querySelector('#seconds').innerHTML = "00"
+
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
